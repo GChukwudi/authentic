@@ -24,7 +24,8 @@ abstract final class AppColors {
   static const neutralTint = Color(0xFFE4E6DF);
 }
 
-extension ColorAlpha on Color {
-  /// Opacity from 0 to 1, without the deprecated withOpacity.
-  Color a(double opacity) => withAlpha((opacity * 255).round());
+extension ColorFade on Color {
+  /// Same colour at [opacity] from 0 to 1. Named `faded` because newer
+  /// Flutter versions give Color its own `a` getter, which would shadow it.
+  Color faded(double opacity) => withAlpha((opacity * 255).round());
 }

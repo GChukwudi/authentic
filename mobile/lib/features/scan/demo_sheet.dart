@@ -50,7 +50,7 @@ class _DemoSheet extends ConsumerWidget {
             const SizedBox(height: 20),
             Text('Try a demo tag', style: AppText.display(34)),
             const SizedBox(height: 6),
-            Text(
+            const Text(
               'Sample tags signed by the seeded producers. Each one ends differently.',
               style: AppText.body,
             ),
@@ -66,7 +66,7 @@ class _DemoSheet extends ConsumerWidget {
                 children: [
                   const Icon(Icons.wifi_off_rounded, size: 20, color: AppColors.inkSoft),
                   const SizedBox(width: 12),
-                  Expanded(
+                  const Expanded(
                     child: Text('Simulate no signal', style: AppText.bodyStrong),
                   ),
                   Switch(

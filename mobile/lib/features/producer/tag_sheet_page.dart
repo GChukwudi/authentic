@@ -32,7 +32,7 @@ class TagSheetPage extends ConsumerWidget {
                       color: AppColors.forest,
                     ),
                   ),
-                  error: (_, __) => Center(
+                  error: (_, __) => const Center(
                     child: Text('Could not sign the tags.', style: AppText.body),
                   ),
                   data: (list) => CustomScrollView(
@@ -50,7 +50,7 @@ class TagSheetPage extends ConsumerWidget {
                                 style: AppText.small.copyWith(fontSize: 15),
                               ),
                               const SizedBox(height: 10),
-                              Text(
+                              const Text(
                                 'Print one per unit. Tap a tag to show it large, then scan it from another phone.',
                                 style: AppText.body,
                               ),
@@ -162,7 +162,7 @@ class _BigTag extends StatelessWidget {
             const SizedBox(height: 18),
             Text(label, style: AppText.mono(20)),
             const SizedBox(height: 6),
-            Text('Scan this from another phone.', style: AppText.small),
+            const Text('Scan this from another phone.', style: AppText.small),
           ],
         ),
       ),

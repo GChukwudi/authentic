@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile/app/providers.dart';
 import 'package:mobile/domain/models/batch.dart';
 
-/// Argument is the batch id ("<producer hex>:<batch id>").
+/// Argument is the batch id: producer key in hex, a colon, then the batch number.
 class TimelineViewModel
     extends AutoDisposeFamilyAsyncNotifier<List<CustodyEvent>, String> {
   @override

@@ -41,7 +41,7 @@ class CreateBatchState {
       );
 }
 
-class CreateBatchViewModel extends Notifier<CreateBatchState> {
+class CreateBatchViewModel extends AutoDisposeNotifier<CreateBatchState> {
   @override
   CreateBatchState build() => const CreateBatchState();
 

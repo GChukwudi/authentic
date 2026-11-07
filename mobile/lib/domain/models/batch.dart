@@ -13,7 +13,7 @@ class BatchSummary {
     this.recallReason,
   });
 
-  /// "<producer hex>:<batch id>"
+  /// Producer key in hex, a colon, then the batch id.
   final String id;
 
   /// Short human label, for example "B-1001".

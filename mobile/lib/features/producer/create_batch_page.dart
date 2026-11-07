@@ -69,7 +69,7 @@ class _CreateBatchPageState extends ConsumerState<CreateBatchPage> {
                       onChanged: vm.setOrigin,
                     ),
                     const SizedBox(height: 26),
-                    Text('UNITS IN THIS BATCH', style: AppText.label),
+                    const Text('UNITS IN THIS BATCH', style: AppText.label),
                     const SizedBox(height: 12),
                     _QuantityStepper(
                       quantity: state.quantity,

@@ -19,6 +19,7 @@ class AuthTag {
 
   String get producerHex => bytesToHex(producerKey);
 
+  /// The batch id used by repositories: producer key in hex, a colon, then the batch number.
   String get batchRef => '$producerHex:$batchId';
 
   String get serialLabel => '#${serial.toString().padLeft(4, '0')}';

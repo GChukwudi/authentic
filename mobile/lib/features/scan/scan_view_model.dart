@@ -30,7 +30,7 @@ class ScanFailed extends ScanState {
   final String message;
 }
 
-class ScanViewModel extends Notifier<ScanState> {
+class ScanViewModel extends AutoDisposeNotifier<ScanState> {
   @override
   ScanState build() => const ScanIdle();
 

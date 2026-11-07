@@ -46,7 +46,7 @@ class TimelinePage extends ConsumerWidget {
                           ),
                         ),
                       ),
-                      error: (_, __) => Text(
+                      error: (_, __) => const Text(
                         'Could not load the trail.',
                         style: AppText.body,
                       ),
@@ -155,19 +155,19 @@ class _RailPainter extends CustomPainter {
       ..color = AppColors.line
       ..strokeWidth = 2;
     if (!isLast) {
-      canvas.drawLine(Offset(x, nodeY + 12), Offset(x, size.height), line);
+      canvas.drawLine(const Offset(x, nodeY + 12), Offset(x, size.height), line);
     }
     if (!isFirst) {
-      canvas.drawLine(Offset(x, 0), Offset(x, nodeY - 12), line);
+      canvas.drawLine(const Offset(x, 0), const Offset(x, nodeY - 12), line);
     }
     canvas.drawCircle(
-      Offset(x, nodeY),
+      const Offset(x, nodeY),
       9,
       Paint()..color = filled ? color : AppColors.paper,
     );
     if (!filled) {
       canvas.drawCircle(
-        Offset(x, nodeY),
+        const Offset(x, nodeY),
         9,
         Paint()
           ..style = PaintingStyle.stroke

@@ -170,7 +170,7 @@ class _KeyLine extends StatelessWidget {
       children: [
         const Icon(Icons.key_rounded, size: 18, color: AppColors.inkMuted),
         const SizedBox(width: 10),
-        Text('SIGNED BY', style: AppText.label),
+        const Text('SIGNED BY', style: AppText.label),
         const Spacer(),
         Text(shortKey(key), style: AppText.mono(14)),
       ],
@@ -195,10 +195,10 @@ class _RiskCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
+          const Row(
             children: [
               Text('SCAN RISK', style: AppText.label),
-              const Spacer(),
+              Spacer(),
               Text('AI summary', style: AppText.small),
             ],
           ),

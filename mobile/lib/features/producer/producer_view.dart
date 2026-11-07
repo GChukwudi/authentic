@@ -259,12 +259,12 @@ class _EmptyBatches extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         border: Border.all(color: AppColors.line, width: 1.2),
       ),
-      child: Column(
+      child: const Column(
         children: [
-          const Icon(Icons.qr_code_2_rounded, size: 44, color: AppColors.line),
-          const SizedBox(height: 12),
+          Icon(Icons.qr_code_2_rounded, size: 44, color: AppColors.line),
+          SizedBox(height: 12),
           Text('No batches yet', style: AppText.heading),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Text(
             'Create one to get a sheet of signed tags.',
             style: AppText.small,
@@ -448,12 +448,12 @@ class _RecallSheetState extends State<_RecallSheet> {
             const SizedBox(height: 22),
             Text('Recall this batch?', style: AppText.display(36)),
             const SizedBox(height: 8),
-            Text(
+            const Text(
               'Anyone who scans a unit from it will see a red "Recalled" verdict. This is recorded on-chain and cannot be undone.',
               style: AppText.body,
             ),
             const SizedBox(height: 20),
-            Text('REASON', style: AppText.label),
+            const Text('REASON', style: AppText.label),
             const SizedBox(height: 10),
             Wrap(
               spacing: 10,

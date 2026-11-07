@@ -150,7 +150,7 @@ class _ScannerChrome extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               'The signature is checked on this phone first.',
-              style: AppText.body.copyWith(color: AppColors.paper.a(0.75)),
+              style: AppText.body.copyWith(color: AppColors.paper.faded(0.75)),
             ),
             const SizedBox(height: 20),
             Pressable(
@@ -160,7 +160,7 @@ class _ScannerChrome extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 22),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(99),
-                  border: Border.all(color: AppColors.paper.a(0.5), width: 1.4),
+                  border: Border.all(color: AppColors.paper.faded(0.5), width: 1.4),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,

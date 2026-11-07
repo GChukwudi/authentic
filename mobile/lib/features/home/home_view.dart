@@ -111,7 +111,7 @@ class _Hero extends StatelessWidget {
               child: CustomPaint(
                 size: const Size.square(260),
                 painter: SealPainter(
-                  color: AppColors.paper.a(0.07),
+                  color: AppColors.paper.faded(0.07),
                   glyph: SealGlyph.check,
                   showGlyph: false,
                 ),
@@ -141,7 +141,7 @@ class _Hero extends StatelessWidget {
                   Text(
                     'Scan the tag on a product. We check the producer\'s signature, even without signal.',
                     style: AppText.body.copyWith(
-                      color: AppColors.paper.a(0.78),
+                      color: AppColors.paper.faded(0.78),
                       fontSize: 17,
                     ),
                   ),
@@ -211,12 +211,12 @@ class _EmptyHistory extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         border: Border.all(color: AppColors.line, width: 1.2),
       ),
-      child: Column(
+      child: const Column(
         children: [
-          const SealMark(size: 54, color: AppColors.line),
-          const SizedBox(height: 14),
+          SealMark(size: 54, color: AppColors.line),
+          SizedBox(height: 14),
           Text('Nothing scanned yet', style: AppText.heading),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Text(
             'Your checks will appear here.',
             style: AppText.small,
