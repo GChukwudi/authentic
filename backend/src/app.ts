@@ -3,6 +3,7 @@ import { authenticate } from './auth.js';
 import { ChainError, type BatchRecord, type Chain } from './chain/types.js';
 import type { Config } from './config.js';
 import { fromHex, toBase58 } from './encoding.js';
+import { verifyPage } from './page.js';
 import { assessRisk, explainRisk } from './risk.js';
 import type { ScanStore } from './store.js';
 import { parseTag, tagSignatureIsValid } from './tag.js';
@@ -44,7 +45,7 @@ function cleanText(value: unknown, max: number): string | null {
 
 export function buildApp(deps: Deps): FastifyInstance {
   const { config, chain, store } = deps;
-  const app = Fastify({ logger: false, bodyLimit: 64 * 1024 });
+  const app = Fastify({ logger: false, bodyLimit: 64 * 1024, routerOptions: { maxParamLength: 512 } });
 
   app.addContentTypeParser(
     'application/json',
@@ -82,6 +83,14 @@ export function buildApp(deps: Deps): FastifyInstance {
     locks.set(key, run.catch(() => undefined));
     return run;
   };
+
+  // Landing page for plain camera scans. See page.ts.
+  app.get('/t/:tag', async (_req, reply) =>
+    reply
+      .header('cache-control', 'no-store')
+      .type('text/html; charset=utf-8')
+      .send(verifyPage()),
+  );
 
   app.get('/health', async () => ({ ok: true, chain: config.chain }));
 

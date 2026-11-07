@@ -118,11 +118,8 @@ class ApiProducerRepository implements ProducerRepository {
       return const [];
     }
     final number = int.parse(batchId.split(':').last);
-    final tags = <String>[];
-    for (var serial = 0; serial < batch.quantity; serial++) {
-      tags.add(TagCodec.encode(await crypto.issue(key, number, serial)));
-    }
-    return tags;
+    final tags = await crypto.issueBatch(key, number, batch.quantity);
+    return [for (final tag in tags) TagCodec.link(tag, api.baseUrl)];
   }
 
   @override

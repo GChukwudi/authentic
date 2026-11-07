@@ -1,3 +1,4 @@
+import 'dart:isolate';
 import 'dart:typed_data';
 
 import 'package:cryptography/cryptography.dart';
@@ -52,6 +53,19 @@ class Crypto {
     );
   }
 
+  /// Signs serials 0 to count - 1. Runs on a
+  /// background isolate: Ed25519 here is pure Dart, and signing a batch on
+  /// the UI thread froze the app long enough for Android to report an ANR.
+  Future<List<AuthTag>> issueBatch(
+    ProducerKey key,
+    int batchId,
+    int count,
+  ) async {
+    final seed = await seedOf(key);
+    final publicKey = key.publicBytes;
+    return Isolate.run(() => _issueBatch(seed, publicKey, batchId, count));
+  }
+
   Future<bool> verify(AuthTag tag) async {
     final message = TagCodec.signedMessage(
       tag.producerKey,
@@ -64,4 +78,26 @@ class Crypto {
     );
     return _ed.verify(message, signature: signature);
   }
+}
+
+Future<List<AuthTag>> _issueBatch(
+  Uint8List seed,
+  Uint8List publicKey,
+  int batchId,
+  int count,
+) async {
+  final ed = Ed25519();
+  final pair = await ed.newKeyPairFromSeed(seed);
+  final tags = <AuthTag>[];
+  for (var serial = 0; serial < count; serial++) {
+    final message = TagCodec.signedMessage(publicKey, batchId, serial);
+    final sig = await ed.sign(message, keyPair: pair);
+    tags.add(AuthTag(
+      producerKey: publicKey,
+      batchId: batchId,
+      serial: serial,
+      signature: Uint8List.fromList(sig.bytes),
+    ));
+  }
+  return tags;
 }
