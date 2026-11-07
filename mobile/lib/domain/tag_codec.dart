@@ -3,12 +3,7 @@ import 'dart:typed_data';
 
 import 'package:mobile/domain/models/auth_tag.dart';
 
-/// QR text is `AUTH1.` + base64url of 108 bytes:
-/// producer key (32), batch id u64 LE (8), serial u32 LE (4), signature (64).
-/// The signed message is ASCII `AUTH1` + key + batch id + serial.
-///
-/// Printed QR codes hold a link, `<api>/t/<tag text>`, so a plain phone
-/// camera opens a web page that checks the tag. The app reads either form.
+
 abstract final class TagCodec {
   static const prefix = 'AUTH1.';
   static const _rawLength = 108;
