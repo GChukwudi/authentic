@@ -8,7 +8,6 @@ import 'package:mobile/app/theme/app_text.dart';
 import 'package:mobile/shared/widgets/app_buttons.dart';
 import 'package:mobile/shared/widgets/seal.dart';
 import 'package:mobile/features/result/verdict_detail.dart';
-import 'package:mobile/features/scan/demo_sheet.dart';
 import 'package:mobile/features/scan/scan_frame.dart';
 import 'package:mobile/features/scan/scan_view_model.dart';
 
@@ -35,12 +34,6 @@ class _ScanViewState extends ConsumerState<ScanView> {
   Future<void> _toggleTorch() async {
     await _camera.toggleTorch();
     if (mounted) setState(() => _torch = !_torch);
-  }
-
-  Future<void> _openDemos() async {
-    final vm = ref.read(scanViewModelProvider.notifier);
-    final tag = await showDemoSheet(context);
-    if (tag != null) await vm.onCode(tag.raw);
   }
 
   @override
@@ -70,7 +63,6 @@ class _ScanViewState extends ConsumerState<ScanView> {
               torch: _torch,
               onClose: () => Navigator.of(context).maybePop(),
               onTorch: _toggleTorch,
-              onDemo: _openDemos,
             ),
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 260),
@@ -113,13 +105,11 @@ class _ScannerChrome extends StatelessWidget {
     required this.torch,
     required this.onClose,
     required this.onTorch,
-    required this.onDemo,
   });
 
   final bool torch;
   final VoidCallback onClose;
   final VoidCallback onTorch;
-  final VoidCallback onDemo;
 
   @override
   Widget build(BuildContext context) {
@@ -153,34 +143,6 @@ class _ScannerChrome extends StatelessWidget {
             Text(
               'The signature is checked on this phone first.',
               style: AppText.body.copyWith(color: AppColors.paper.faded(0.75)),
-            ),
-            const SizedBox(height: 20),
-            Pressable(
-              onTap: onDemo,
-              child: Container(
-                height: 52,
-                padding: const EdgeInsets.symmetric(horizontal: 22),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(99),
-                  border:
-                      Border.all(color: AppColors.paper.faded(0.5), width: 1.4),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.auto_awesome_mosaic_rounded,
-                        size: 20, color: AppColors.paper),
-                    const SizedBox(width: 10),
-                    Text(
-                      'Try a demo tag',
-                      style: AppText.button.copyWith(
-                        color: AppColors.paper,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ),
           ],
         ),

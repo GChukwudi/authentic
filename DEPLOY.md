@@ -41,7 +41,7 @@ CHAIN=solana RELAYER_KEYPAIR=./relayer.json PROGRAM_ID=<program id> npm run init
    - `ANTHROPIC_API_KEY`: optional, for the AI-worded risk explanation
 4. After it deploys, open `https://<service>.onrender.com/health`. It should say `"chain":"solana"`.
 
-The blueprint uses the Starter plan with a 1 GB disk. Scan counts live in SQLite on that disk, so on the free plan they would reset whenever the service restarts, and it also sleeps after 15 idle minutes, so the first scan of a demo would time out.
+The blueprint uses the Starter plan with a 1 GB disk. Scan counts live in SQLite on that disk, so on the free plan they would reset whenever the service restarts, and it also sleeps after 15 idle minutes, so the first scan after a quiet spell would time out.
 
 ## 4. App
 
@@ -52,4 +52,4 @@ flutter run --dart-define=API_URL=https://<service>.onrender.com
 flutter build apk --release --dart-define=API_URL=https://<service>.onrender.com
 ```
 
-Without `API_URL` the app runs on the seeded mock world, as before.
+`API_URL` has no default. A build without it shows a setup message instead of starting.

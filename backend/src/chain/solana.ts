@@ -130,6 +130,7 @@ export class SolanaChain implements Chain {
   }
 
   static fromConfig(config: Config): SolanaChain {
+    if (!config.programId) throw new Error('PROGRAM_ID is required when CHAIN=solana');
     if (!config.relayerKeypair) throw new Error('RELAYER_KEYPAIR is required when CHAIN=solana');
     const text = config.relayerKeypair.trim().startsWith('[')
       ? config.relayerKeypair

@@ -6,26 +6,46 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobile/app/app.dart';
 import 'package:mobile/app/app_config.dart';
 import 'package:mobile/app/providers.dart';
-import 'package:mobile/data/mock/mock_world.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  // With --dart-define=API_URL=... the app talks to the backend. Without it,
-  // everything runs on a seeded in-memory world.
-  final overrides = AppConfig.isLive
-      ? [
-          preferencesProvider.overrideWithValue(
-            await SharedPreferences.getInstance(),
-          ),
-        ]
-      : [mockWorldProvider.overrideWithValue(await MockWorld.create())];
+  if (!AppConfig.isConfigured) {
+    runApp(const _MissingConfig());
+    return;
+  }
+
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  final preferences = await SharedPreferences.getInstance();
 
   runApp(
     ProviderScope(
-      overrides: overrides,
+      overrides: [preferencesProvider.overrideWithValue(preferences)],
       child: const AuthenticApp(),
     ),
   );
+}
+
+/// Shown when the app was built without --dart-define=API_URL=...
+class _MissingConfig extends StatelessWidget {
+  const _MissingConfig();
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.all(24),
+            child: Text(
+              'API_URL is not set.\nBuild with --dart-define=API_URL=<backend url>.',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

@@ -16,7 +16,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     port: Number(env.PORT ?? 8787),
     chain,
     rpcUrl: env.RPC_URL ?? 'https://api.devnet.solana.com',
-    programId: env.PROGRAM_ID ?? 'F3zUFWwbK9pQme2QYtiJcNtwfpFStkKSuAdbuzaqRpML',
+    programId: env.PROGRAM_ID ?? '',
     relayerKeypair: env.RELAYER_KEYPAIR ?? '',
     dbPath: env.DB_PATH ?? 'authentic.db',
     anthropicKey: env.ANTHROPIC_API_KEY || undefined,

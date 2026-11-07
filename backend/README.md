@@ -9,7 +9,6 @@ cd backend
 npm install
 cp .env.example .env     # CHAIN=memory works with no Solana at all
 npm start                # http://localhost:8787
-npm test
 ```
 
 Node 22.13+ (uses the built-in `node:sqlite`).

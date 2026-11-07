@@ -1,6 +1,6 @@
 import { ChainError, type BatchRecord, type Chain, type ProducerRecord } from './types.js';
 
-/** In-memory registry for local development and tests. */
+/** In-memory registry for local development without Solana. Starts empty. */
 export class MemoryChain implements Chain {
   private producers = new Map<string, ProducerRecord>();
   private batches = new Map<string, BatchRecord>();

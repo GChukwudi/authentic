@@ -15,24 +15,17 @@ class ApiVerificationRepository implements VerificationRepository {
     required this.api,
     required this.crypto,
     required this.keys,
-    required this.isOnline,
   });
 
   final ApiClient api;
   final Crypto crypto;
   final KeyStore keys;
 
-  /// Demo switch for "no signal"; the real network can also fail.
-  final bool Function() isOnline;
-
   @override
   Future<bool> signatureIsValid(AuthTag tag) => crypto.verify(tag);
 
   @override
   Future<Verdict> confirmOnline(AuthTag tag) async {
-    if (!isOnline()) {
-      throw const OfflineException();
-    }
     final json = await api.post('/v1/verify', {
       'tag': TagCodec.encode(tag),
       'clientId': keys.deviceId(),
@@ -90,9 +83,8 @@ class ApiProducerRepository implements ProducerRepository {
     if (key == null) {
       return const [];
     }
-    final json =
-        await api.get('/v1/producers/${bytesToHex(key.publicBytes)}/batches')
-            as List;
+    final json = await api
+        .get('/v1/producers/${bytesToHex(key.publicBytes)}/batches') as List;
     _batches = [
       for (final b in json) batchFromJson(b as Map<String, dynamic>),
     ];
