@@ -1,3 +1,5 @@
+import { mkdirSync } from 'node:fs';
+import { dirname } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 
 export interface ScanResult {
@@ -12,10 +14,10 @@ export interface ScanResult {
 
 /** Scan counters and events. SQLite, one file. */
 export class ScanStore {
-  private db: DatabaseSync;
+  private readonly db: DatabaseSync;
 
   constructor(path: string) {
-    this.db = new DatabaseSync(path);
+    this.db = ScanStore.open(path);
     this.db.exec(`
       CREATE TABLE IF NOT EXISTS scans (
         batch_ref TEXT NOT NULL,
@@ -25,6 +27,22 @@ export class ScanStore {
       );
       CREATE INDEX IF NOT EXISTS scans_unit ON scans (batch_ref, serial);
     `);
+  }
+
+  /** Opens [path], creating its folder. If that fails (for example a disk that is not mounted), falls back to a local file and warns. */
+  private static open(path: string): DatabaseSync {
+    try {
+      if (path !== ':memory:') {
+        mkdirSync(dirname(path), { recursive: true });
+      }
+      return new DatabaseSync(path);
+    } catch (e) {
+      const fallback = 'authentic.db';
+      console.warn(
+        `WARNING: cannot open ${path} (${(e as Error).message}). Using ${fallback}; scan counts will NOT survive a restart.`,
+      );
+      return new DatabaseSync(fallback);
+    }
   }
 
   record(batchRef: string, serial: number, client: string, at = Date.now()): ScanResult {
