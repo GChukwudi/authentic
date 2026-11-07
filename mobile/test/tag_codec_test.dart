@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
-import 'package:authentic/data/sources/crypto.dart';
-import 'package:authentic/domain/models/auth_tag.dart';
-import 'package:authentic/domain/tag_codec.dart';
+import 'package:mobile/data/sources/crypto.dart';
+import 'package:mobile/domain/models/auth_tag.dart';
+import 'package:mobile/domain/tag_codec.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
