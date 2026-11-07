@@ -1,7 +1,8 @@
-/// Set at build time:
-///   flutter run --dart-define=API_URL=https://authentic-api.onrender.com
 abstract final class AppConfig {
-  static const apiUrl = String.fromEnvironment('API_URL');
-
-  static bool get isConfigured => apiUrl.isNotEmpty;
+  /// The deployed backend. Override for a local one with
+  ///   flutter run --dart-define=API_URL=http://localhost:8787
+  static const apiUrl = String.fromEnvironment(
+    'API_URL',
+    defaultValue: 'https://authentic-9fw1.onrender.com',
+  );
 }

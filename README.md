@@ -45,14 +45,12 @@ One typeface throughout: Inter, bundled in `mobile/assets/fonts` (SIL OFL).
 
 ## Run it
 
-Start the backend first (see `backend/README.md`), then:
-
 ```bash
 cd mobile
 ./tool/setup.sh        # first time only: creates android/ and ios/ around the existing code
-flutter run --dart-define=API_URL=http://localhost:8787
+flutter run
 ```
 
-`API_URL` is required. Without it the app shows a setup message instead of starting. On the Android emulator use `http://10.0.2.2:8787` for a local backend.
+The app talks to the deployed backend at `https://authentic-9fw1.onrender.com` (set in `lib/app/app_config.dart`). To use a local one instead, add `--dart-define=API_URL=http://localhost:8787` (`http://10.0.2.2:8787` on the Android emulator).
 
 Deploying the program, backend and app is covered in `DEPLOY.md`.

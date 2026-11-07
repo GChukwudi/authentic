@@ -48,8 +48,8 @@ The blueprint uses the Starter plan with a 1 GB disk. Scan counts live in SQLite
 ```bash
 cd mobile
 flutter pub get
-flutter run --dart-define=API_URL=https://<service>.onrender.com
-flutter build apk --release --dart-define=API_URL=https://<service>.onrender.com
+flutter run
+flutter build apk --release
 ```
 
-`API_URL` has no default. A build without it shows a setup message instead of starting.
+The backend URL is set in `lib/app/app_config.dart`. If the Render service URL changes, update it there.
