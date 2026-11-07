@@ -1,0 +1,29 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+*.iml
+.idea/
+.vscode/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
+coverage/
+
+# Generated platform folders are created by tool/setup.sh
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/ios/Pods/
+mobile/ios/.symlinks/
+
+# Secrets and keys (for the backend and Solana tooling later)
+.env
+*.json.key
+id.json
+target/
+node_modules/
+
+.DS_Store
+target/

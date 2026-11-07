@@ -1,0 +1,18 @@
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+authentic = "F3zUFWwbK9pQme2QYtiJcNtwfpFStkKSuAdbuzaqRpML"
+
+[programs.devnet]
+authentic = "F3zUFWwbK9pQme2QYtiJcNtwfpFStkKSuAdbuzaqRpML"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "echo 'program is exercised through backend/ tests'"
