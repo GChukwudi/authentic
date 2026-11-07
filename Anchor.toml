@@ -4,11 +4,14 @@
 resolution = true
 skip-lint = false
 
+[programs.devnet]
+authentic = "AYsrp5jthPKTkwbPemKz2rmn3rU1aa6MN7ErWxTD4wVd"
+
 [programs.localnet]
 authentic = "F3zUFWwbK9pQme2QYtiJcNtwfpFStkKSuAdbuzaqRpML"
 
-[programs.devnet]
-authentic = "F3zUFWwbK9pQme2QYtiJcNtwfpFStkKSuAdbuzaqRpML"
+[registry]
+url = "https://api.apr.dev"
 
 [provider]
 cluster = "devnet"

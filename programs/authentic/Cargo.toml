@@ -3,6 +3,7 @@ name = "authentic"
 version = "0.1.0"
 description = "On-chain registry for Authentic: producers, batches and recalls"
 edition = "2021"
+rust-version = "1.79"
 
 [lib]
 crate-type = ["cdylib", "lib"]
