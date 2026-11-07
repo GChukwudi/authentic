@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-/// Paper and ink. Flat colour, hairline borders, no blur or gradients.
+/// White paper and ink. Flat colour, hairline borders, no blur or gradients.
 abstract final class AppColors {
-  static const paper = Color(0xFFF6F1E7);
-  static const paperDeep = Color(0xFFEBE3D1);
-  static const card = Color(0xFFFFFCF6);
-  static const line = Color(0xFFDDD4C0);
+  static const paper = Color(0xFFFFFFFF);
+  static const paperDeep = Color(0xFFF1F3F2);
+  static const card = Color(0xFFFFFFFF);
+  static const line = Color(0xFFE2E6E4);
 
   static const ink = Color(0xFF10241D);
   static const inkSoft = Color(0xFF3F5149);

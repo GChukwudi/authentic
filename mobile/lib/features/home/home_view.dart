@@ -25,28 +25,34 @@ class HomeView extends ConsumerWidget {
     return SafeArea(
       bottom: false,
       child: PageColumn(
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(24, 16, 24, 28),
+        child: Column(
           children: [
-            const _Masthead(),
-            const SizedBox(height: 26),
-            _Hero(onScan: onScan),
-            const SizedBox(height: 30),
-            const _Steps(),
-            const SizedBox(height: 34),
-            SectionLabel('Recent checks', trailing: '${recent.length}'),
-            const SizedBox(height: 14),
-            if (recent.isEmpty)
-              const _EmptyHistory()
-            else
-              for (final outcome in recent) ...[
-                _HistoryTile(
-                  outcome: outcome,
-                  onTap: () => Navigator.of(context)
-                      .push(slideUp(ResultPage(outcome: outcome))),
-                ),
-                const SizedBox(height: 10),
-              ],
+            const Padding(
+              padding: EdgeInsets.fromLTRB(24, 16, 24, 12),
+              child: _Masthead(),
+            ),
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.fromLTRB(24, 8, 24, 28),
+                children: [
+                  _Hero(onScan: onScan),
+                  const SizedBox(height: 28),
+                  SectionLabel('Recent checks', trailing: '${recent.length}'),
+                  const SizedBox(height: 14),
+                  if (recent.isEmpty)
+                    const _EmptyHistory()
+                  else
+                    for (final outcome in recent) ...[
+                      _HistoryTile(
+                        outcome: outcome,
+                        onTap: () => Navigator.of(context)
+                            .push(slideUp(ResultPage(outcome: outcome))),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -83,8 +89,8 @@ class _Masthead extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Text('Works offline',
-                  style: AppText.small.copyWith(fontSize: 13)),
+              Text('No signal needed',
+                  style: AppText.small.copyWith(fontSize: 11.5)),
             ],
           ),
         ),
@@ -100,105 +106,42 @@ class _Hero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
-      child: Container(
+    return Container(
+      padding: const EdgeInsets.fromLTRB(20, 22, 20, 20),
+      decoration: BoxDecoration(
         color: AppColors.forest,
-        child: Stack(
-          children: [
-            Positioned(
-              right: -70,
-              top: -60,
-              child: CustomPaint(
-                size: const Size.square(260),
-                painter: SealPainter(
-                  color: AppColors.paper.faded(0.07),
-                  glyph: SealGlyph.check,
-                  showGlyph: false,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(26, 32, 26, 26),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('CHECK A PRODUCT',
-                      style: AppText.label.copyWith(color: AppColors.ochre)),
-                  const SizedBox(height: 14),
-                  Text.rich(
-                    TextSpan(
-                      style: AppText.display(52, color: AppColors.paper),
-                      children: [
-                        const TextSpan(text: 'Is it the\n'),
-                        TextSpan(
-                          text: 'real',
-                          style: AppText.display(52,
-                              color: AppColors.ochre, italic: true),
-                        ),
-                        const TextSpan(text: ' thing?'),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 14),
-                  Text(
-                    'Scan the tag on a product. We check the producer\'s signature, even without signal.',
-                    style: AppText.body.copyWith(
-                      color: AppColors.paper.faded(0.78),
-                      fontSize: 17,
-                    ),
-                  ),
-                  const SizedBox(height: 26),
-                  PrimaryButton(
-                    label: 'Scan a tag',
-                    icon: Icons.qr_code_scanner_rounded,
-                    tone: ButtonTone.paper,
-                    onPressed: onScan,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+        borderRadius: BorderRadius.circular(22),
       ),
-    );
-  }
-}
-
-class _Steps extends StatelessWidget {
-  const _Steps();
-
-  @override
-  Widget build(BuildContext context) {
-    Widget cell(String n, String title, String body) => Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(n, style: AppText.mono(13, color: AppColors.ochre)),
-              const SizedBox(height: 8),
-              Text(title, style: AppText.heading.copyWith(fontSize: 17)),
-              const SizedBox(height: 4),
-              Text(body, style: AppText.small.copyWith(fontSize: 13.5)),
-            ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text.rich(
+            TextSpan(
+              style: AppText.display(38, color: AppColors.paper),
+              children: [
+                const TextSpan(text: 'Is it the '),
+                TextSpan(
+                  text: 'real',
+                  style: AppText.display(38, color: AppColors.ochre),
+                ),
+                const TextSpan(text: ' thing?'),
+              ],
+            ),
           ),
-        );
-
-    Widget divider() => Container(
-          width: 1,
-          height: 84,
-          margin: const EdgeInsets.symmetric(horizontal: 14),
-          color: AppColors.line,
-        );
-
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        cell('01', 'Signature', 'Signed by the producer'),
-        divider(),
-        cell('02', 'Registry', 'Recorded on Solana'),
-        divider(),
-        cell('03', 'History', 'Copies show up'),
-      ],
+          const SizedBox(height: 8),
+          Text(
+            'Scan the tag on a product to check the producer\'s signature, even without signal.',
+            style: AppText.small.copyWith(color: AppColors.paper.faded(0.78)),
+          ),
+          const SizedBox(height: 18),
+          PrimaryButton(
+            label: 'Scan a tag',
+            icon: Icons.qr_code_scanner_rounded,
+            tone: ButtonTone.paper,
+            onPressed: onScan,
+          ),
+        ],
+      ),
     );
   }
 }

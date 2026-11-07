@@ -42,7 +42,7 @@ class SectionLabel extends StatelessWidget {
         Text(text.toUpperCase(), style: AppText.label),
         const Spacer(),
         if (trailing != null)
-          Text(trailing!, style: AppText.mono(12, color: AppColors.inkMuted)),
+          Text(trailing!, style: AppText.mono(11, color: AppColors.inkMuted)),
       ],
     );
   }
@@ -90,11 +90,11 @@ class LabeledField extends StatelessWidget {
           controller: controller,
           onChanged: onChanged,
           textCapitalization: capitalization,
-          style: AppText.bodyStrong.copyWith(fontSize: 18),
+          style: AppText.bodyStrong.copyWith(fontSize: 16),
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: AppText.body.copyWith(
-              fontSize: 18,
+              fontSize: 16,
               color: AppColors.inkMuted.faded(0.7),
             ),
             filled: true,

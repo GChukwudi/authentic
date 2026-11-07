@@ -175,7 +175,7 @@ class _ScannerChrome extends StatelessWidget {
                       'Try a demo tag',
                       style: AppText.button.copyWith(
                         color: AppColors.paper,
-                        fontSize: 16,
+                        fontSize: 14,
                       ),
                     ),
                   ],

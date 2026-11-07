@@ -53,7 +53,7 @@ class _CreateBatchPageState extends ConsumerState<CreateBatchPage> {
                   children: [
                     Text(
                       'Every unit in the batch gets its own tag, signed with your key.',
-                      style: AppText.body.copyWith(fontSize: 17),
+                      style: AppText.body.copyWith(fontSize: 15),
                     ),
                     const SizedBox(height: 24),
                     LabeledField(
@@ -161,7 +161,7 @@ class _QuantityStepper extends StatelessWidget {
                   ),
                   child: Text(
                     '$n',
-                    style: AppText.mono(14,
+                    style: AppText.mono(12.5,
                         color: quantity == n ? AppColors.paper : AppColors.ink),
                   ),
                 ),

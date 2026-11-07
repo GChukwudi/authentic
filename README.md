@@ -42,9 +42,9 @@ Views read state and send events. ViewModels (Riverpod `Notifier`s with immutabl
 
 ## Design
 
-Paper and ink: flat bone background, deep forest green, one ochre accent, hairline borders. No blur, glass or gradients. Everything distinctive is drawn in code: the scalloped verdict seal and its self-drawing glyphs, the ticket card with notches and a tear line, the risk gauge, the scan frame with a sweeping line, and the custody rail.
+Paper and ink: flat white background, deep forest green, one ochre accent, hairline borders. No blur, glass or gradients. Everything distinctive is drawn in code: the scalloped verdict seal and its self-drawing glyphs, the ticket card with notches and a tear line, the risk gauge, the scan frame with a sweeping line, and the custody rail.
 
-Fonts are bundled in `mobile/assets/fonts` (all SIL OFL): Instrument Serif for display, Barlow for text, IBM Plex Mono for codes.
+One typeface throughout: Inter, bundled in `mobile/assets/fonts` (SIL OFL).
 
 ## Run it
 

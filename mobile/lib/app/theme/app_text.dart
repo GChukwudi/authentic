@@ -2,80 +2,83 @@ import 'package:flutter/material.dart';
 
 import 'package:mobile/app/theme/app_colors.dart';
 
+/// One typeface throughout: Inter.
 abstract final class AppText {
-  static const _serif = 'InstrumentSerif';
-  static const _sans = 'Barlow';
-  static const _mono = 'PlexMono';
+  static const family = 'Inter';
 
-  static TextStyle display(
-    double size, {
-    Color color = AppColors.ink,
-    bool italic = false,
-  }) =>
-      TextStyle(
-        fontFamily: _serif,
-        fontSize: size,
-        height: 1.02,
-        letterSpacing: -size * 0.012,
-        color: color,
-        fontStyle: italic ? FontStyle.italic : FontStyle.normal,
-      );
+  /// Inter reads larger than the serif these sizes were picked for,
+  /// so display text is scaled down to keep the same visual weight.
+  static const _displayScale = 0.7;
+
+  static TextStyle display(double size, {Color color = AppColors.ink}) {
+    final scaled = size * _displayScale;
+    return TextStyle(
+      fontFamily: family,
+      fontSize: scaled,
+      fontWeight: FontWeight.w700,
+      height: 1.1,
+      letterSpacing: -scaled * 0.025,
+      color: color,
+    );
+  }
 
   static const heading = TextStyle(
-    fontFamily: _sans,
-    fontSize: 18,
+    fontFamily: family,
+    fontSize: 16,
     fontWeight: FontWeight.w600,
     height: 1.25,
+    letterSpacing: -0.2,
     color: AppColors.ink,
   );
 
   static const body = TextStyle(
-    fontFamily: _sans,
-    fontSize: 16,
+    fontFamily: family,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
-    height: 1.4,
+    height: 1.45,
     color: AppColors.inkSoft,
   );
 
   static const bodyStrong = TextStyle(
-    fontFamily: _sans,
-    fontSize: 16,
+    fontFamily: family,
+    fontSize: 14,
     fontWeight: FontWeight.w500,
     height: 1.35,
     color: AppColors.ink,
   );
 
   static const small = TextStyle(
-    fontFamily: _sans,
-    fontSize: 14,
+    fontFamily: family,
+    fontSize: 12.5,
     fontWeight: FontWeight.w400,
-    height: 1.35,
+    height: 1.4,
     color: AppColors.inkMuted,
   );
 
   static const label = TextStyle(
-    fontFamily: _sans,
-    fontSize: 12,
+    fontFamily: family,
+    fontSize: 11,
     fontWeight: FontWeight.w600,
-    letterSpacing: 1.4,
+    letterSpacing: 0.8,
     height: 1.2,
     color: AppColors.inkMuted,
   );
 
   static const button = TextStyle(
-    fontFamily: _sans,
-    fontSize: 17,
+    fontFamily: family,
+    fontSize: 14,
     fontWeight: FontWeight.w600,
-    letterSpacing: 0.2,
     height: 1.1,
   );
 
+  /// Codes and keys: same typeface, tabular figures so digits line up.
   static TextStyle mono(double size, {Color color = AppColors.ink}) =>
       TextStyle(
-        fontFamily: _mono,
+        fontFamily: family,
         fontSize: size,
         fontWeight: FontWeight.w500,
         height: 1.25,
         color: color,
+        fontFeatures: const [FontFeature.tabularFigures()],
       );
 }

@@ -33,7 +33,7 @@ class TimelinePage extends ConsumerWidget {
                     const SizedBox(height: 6),
                     Text(
                       '${batch.origin}  ·  ${batch.label}',
-                      style: AppText.small.copyWith(fontSize: 15),
+                      style: AppText.small.copyWith(fontSize: 13),
                     ),
                     const SizedBox(height: 28),
                     events.when(
@@ -115,14 +115,14 @@ class _TimelineRow extends StatelessWidget {
                 children: [
                   Text(
                     formatDate(event.at).toUpperCase(),
-                    style: AppText.mono(12, color: AppColors.inkMuted),
+                    style: AppText.mono(11, color: AppColors.inkMuted),
                   ),
                   const SizedBox(height: 6),
                   Text(event.title, style: AppText.heading),
                   const SizedBox(height: 4),
                   Text(
                     '${event.actor}  ·  ${event.place}',
-                    style: AppText.body.copyWith(fontSize: 15),
+                    style: AppText.body.copyWith(fontSize: 13),
                   ),
                 ],
               ),

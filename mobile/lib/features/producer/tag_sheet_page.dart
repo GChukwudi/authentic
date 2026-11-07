@@ -49,7 +49,7 @@ class TagSheetPage extends ConsumerWidget {
                               const SizedBox(height: 6),
                               Text(
                                 '${list.length} signed tags  ·  ${batch.label}',
-                                style: AppText.small.copyWith(fontSize: 15),
+                                style: AppText.small.copyWith(fontSize: 13),
                               ),
                               const SizedBox(height: 10),
                               const Text(
@@ -120,7 +120,7 @@ class _TagCell extends StatelessWidget {
           children: [
             Expanded(child: TagQr(data: data)),
             const SizedBox(height: 8),
-            Text(_label, style: AppText.mono(12, color: AppColors.inkSoft)),
+            Text(_label, style: AppText.mono(11, color: AppColors.inkSoft)),
           ],
         ),
       ),
@@ -162,7 +162,7 @@ class _BigTag extends StatelessWidget {
               child: TagQr(data: data, size: side),
             ),
             const SizedBox(height: 18),
-            Text(label, style: AppText.mono(20)),
+            Text(label, style: AppText.mono(17.5)),
             const SizedBox(height: 6),
             const Text('Scan this from another phone.', style: AppText.small),
           ],

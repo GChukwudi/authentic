@@ -75,7 +75,7 @@ class VerdictDetail extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: AppText.body.copyWith(
                           color: AppColors.inkSoft,
-                          fontSize: 16,
+                          fontSize: 14,
                         ),
                       ),
                     ],
@@ -175,7 +175,7 @@ class _KeyLine extends StatelessWidget {
         const SizedBox(width: 10),
         const Text('SIGNED BY', style: AppText.label),
         const Spacer(),
-        Text(shortKey(key), style: AppText.mono(14)),
+        Text(shortKey(key), style: AppText.mono(12.5)),
       ],
     );
   }

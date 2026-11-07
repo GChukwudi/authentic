@@ -142,7 +142,7 @@ class _DockItem extends StatelessWidget {
           Text(
             label,
             style: AppText.small.copyWith(
-              fontSize: 13,
+              fontSize: 11.5,
               color: color,
               fontWeight: active ? FontWeight.w600 : FontWeight.w500,
             ),

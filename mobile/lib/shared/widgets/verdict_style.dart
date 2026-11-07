@@ -110,7 +110,7 @@ class VerdictChip extends StatelessWidget {
             style: AppText.small.copyWith(
               color: AppColors.ink,
               fontWeight: FontWeight.w600,
-              fontSize: 13,
+              fontSize: 11.5,
             ),
           ),
         ],

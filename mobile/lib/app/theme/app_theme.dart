@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:mobile/app/theme/app_colors.dart';
+import 'package:mobile/app/theme/app_text.dart';
 
 ThemeData buildTheme() {
   return ThemeData(
     useMaterial3: true,
-    fontFamily: 'Barlow',
+    fontFamily: AppText.family,
     scaffoldBackgroundColor: AppColors.paper,
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.forest,

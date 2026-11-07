@@ -71,7 +71,7 @@ class _SetupViewState extends ConsumerState<_SetupView> {
         const SizedBox(height: 14),
         Text(
           'Register once. Every unit you make gets its own signed QR tag that anyone can check.',
-          style: AppText.body.copyWith(fontSize: 17),
+          style: AppText.body.copyWith(fontSize: 15),
         ),
         const SizedBox(height: 26),
         Container(
@@ -89,7 +89,7 @@ class _SetupViewState extends ConsumerState<_SetupView> {
                 child: Text(
                   'A signing key is created on this phone. It never leaves it, and nobody can sign tags in your name.',
                   style:
-                      AppText.body.copyWith(fontSize: 15, color: AppColors.ink),
+                      AppText.body.copyWith(fontSize: 13, color: AppColors.ink),
                 ),
               ),
             ],
@@ -239,7 +239,7 @@ class _KeyChipState extends State<_KeyChip> {
               const SizedBox(width: 8),
               Text(
                 _copied ? 'Copied' : shortKey(widget.publicKey),
-                style: AppText.mono(13),
+                style: AppText.mono(11.5),
               ),
             ],
           ),
@@ -320,7 +320,7 @@ class _BatchCard extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(batch.productName,
-                        style: AppText.heading.copyWith(fontSize: 20)),
+                        style: AppText.heading.copyWith(fontSize: 17.5)),
                     const SizedBox(height: 3),
                     Text(
                       '${batch.origin}  ·  ${batch.label}  ·  ${formatDate(batch.createdAt)}',
@@ -351,7 +351,7 @@ class _BatchCard extends ConsumerWidget {
           const SizedBox(height: 8),
           Text(
             '${batch.unitsScanned} of ${batch.quantity} scanned',
-            style: AppText.mono(13, color: AppColors.inkSoft),
+            style: AppText.mono(11.5, color: AppColors.inkSoft),
           ),
           if (recalled && batch.recallReason != null) ...[
             const SizedBox(height: 10),
@@ -407,7 +407,7 @@ class _StatusPill extends StatelessWidget {
         style: AppText.small.copyWith(
           color: color,
           fontWeight: FontWeight.w600,
-          fontSize: 13,
+          fontSize: 11.5,
         ),
       ),
     );
@@ -483,7 +483,7 @@ class _RecallSheetState extends State<_RecallSheet> {
                       child: Text(
                         _reasons[i],
                         style: AppText.bodyStrong.copyWith(
-                          fontSize: 15,
+                          fontSize: 13,
                           color:
                               _selected == i ? AppColors.paper : AppColors.ink,
                         ),
