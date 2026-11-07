@@ -25,6 +25,22 @@ class Crypto {
     return ProducerKey(pair, Uint8List.fromList(pub.bytes));
   }
 
+  /// Rebuilds a key from its 32-byte seed (see [seedOf]).
+  Future<ProducerKey> keyFromSeed(Uint8List seed) async {
+    final pair = await _ed.newKeyPairFromSeed(seed);
+    final pub = await pair.extractPublicKey();
+    return ProducerKey(pair, Uint8List.fromList(pub.bytes));
+  }
+
+  Future<Uint8List> seedOf(ProducerKey key) async {
+    return Uint8List.fromList(await key.pair.extractPrivateKeyBytes());
+  }
+
+  Future<Uint8List> signBytes(ProducerKey key, List<int> message) async {
+    final sig = await _ed.sign(message, keyPair: key.pair);
+    return Uint8List.fromList(sig.bytes);
+  }
+
   Future<AuthTag> issue(ProducerKey key, int batchId, int serial) async {
     final message = TagCodec.signedMessage(key.publicBytes, batchId, serial);
     final sig = await _ed.sign(message, keyPair: key.pair);

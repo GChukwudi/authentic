@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:mobile/app/app_config.dart';
 import 'package:mobile/app/providers.dart';
 import 'package:mobile/app/theme/app_colors.dart';
 import 'package:mobile/app/theme/app_text.dart';
@@ -27,7 +28,8 @@ class _DemoSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tags = ref.watch(mockWorldProvider).demoTags;
+    final tags =
+        AppConfig.isLive ? const <DemoTag>[] : ref.watch(mockWorldProvider).demoTags;
     final online = ref.watch(onlineProvider);
 
     return SafeArea(
@@ -50,8 +52,10 @@ class _DemoSheet extends ConsumerWidget {
             const SizedBox(height: 20),
             Text('Try a demo tag', style: AppText.display(34)),
             const SizedBox(height: 6),
-            const Text(
-              'Sample tags signed by the seeded producers. Each one ends differently.',
+            Text(
+              AppConfig.isLive
+                  ? 'Create a batch in Producer mode, then scan its tags from another phone.'
+                  : 'Sample tags signed by the seeded producers. Each one ends differently.',
               style: AppText.body,
             ),
             const SizedBox(height: 16),

@@ -1,0 +1,30 @@
+# Render Blueprint. New > Blueprint > pick this repo.
+# Starter plan: no spin-down, and a disk so scan counts survive restarts.
+services:
+  - type: web
+    name: authentic-api
+    runtime: node
+    rootDir: backend
+    plan: starter
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    disk:
+      name: authentic-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: CHAIN
+        value: solana
+      - key: RPC_URL
+        value: https://api.devnet.solana.com
+      - key: PROGRAM_ID
+        sync: false
+      - key: RELAYER_KEYPAIR
+        sync: false
+      - key: DB_PATH
+        value: /data/authentic.db
+      - key: ANTHROPIC_API_KEY
+        sync: false
