@@ -3,7 +3,6 @@ import 'dart:typed_data';
 
 import 'package:mobile/domain/models/auth_tag.dart';
 
-
 abstract final class TagCodec {
   static const prefix = 'AUTH1.';
   static const _rawLength = 108;

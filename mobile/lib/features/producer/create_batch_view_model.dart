@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:mobile/app/providers.dart';
+import 'package:mobile/data/api/api_client.dart';
 import 'package:mobile/domain/models/batch.dart';
+import 'package:mobile/domain/models/verdict.dart';
 import 'package:mobile/features/producer/producer_view_model.dart';
 
 const maxBatchQuantity = 100;
@@ -76,6 +78,16 @@ class CreateBatchViewModel extends AutoDisposeNotifier<CreateBatchState> {
           );
       await ref.read(producerViewModelProvider.notifier).refresh();
       state = state.copyWith(submitting: false, created: batch);
+    } on OfflineException {
+      state = state.copyWith(
+        submitting: false,
+        error: 'No connection to the server. Try again.',
+      );
+    } on ApiException catch (e) {
+      state = state.copyWith(
+        submitting: false,
+        error: 'Could not create the batch: ${e.message}.',
+      );
     } catch (_) {
       state = state.copyWith(
         submitting: false,

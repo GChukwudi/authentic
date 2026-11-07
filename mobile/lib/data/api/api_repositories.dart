@@ -98,12 +98,31 @@ class ApiProducerRepository implements ProducerRepository {
     required int quantity,
   }) async {
     final key = await _requireKey();
-    final json = await api.post(
-      '/v1/producers/${bytesToHex(key.publicBytes)}/batches',
-      {'productName': productName, 'origin': origin, 'quantity': quantity},
-      signWith: key,
-    );
-    return batchFromJson(json as Map<String, dynamic>);
+    final path = '/v1/producers/${bytesToHex(key.publicBytes)}/batches';
+    final body = {
+      'productName': productName,
+      'origin': origin,
+      'quantity': quantity,
+    };
+    try {
+      final json = await api.post(path, body, signWith: key);
+      return batchFromJson(json as Map<String, dynamic>);
+    } on ApiException catch (e) {
+      if (e.status != 404) rethrow;
+      // The server has forgotten this producer (its registry was reset).
+      // The key and name are still on the phone, so register again and retry.
+      await _registerAgain(key);
+      final json = await api.post(path, body, signWith: key);
+      return batchFromJson(json as Map<String, dynamic>);
+    }
+  }
+
+  Future<void> _registerAgain(ProducerKey key) async {
+    final profile = keys.loadProfile();
+    if (profile == null) {
+      throw StateError('Register before creating a batch');
+    }
+    await api.post('/v1/producers', {'name': profile.name}, signWith: key);
   }
 
   @override
