@@ -26,7 +26,7 @@ What works today:
 
 ## MVVM structure
 
-```
+```text
 lib/
   app/        theme, providers, shell
   core/       encoding and formatting helpers
