@@ -66,7 +66,8 @@ class _FramePainter extends CustomPainter {
     const radius = 30.0;
     const arm = 38.0;
 
-    final cutout = RRect.fromRectAndRadius(frame, const Radius.circular(radius));
+    final cutout =
+        RRect.fromRectAndRadius(frame, const Radius.circular(radius));
     final dim = Path.combine(
       PathOperation.difference,
       Path()..addRect(Offset.zero & size),
@@ -105,7 +106,8 @@ class _FramePainter extends CustomPainter {
       ..lineTo(l, b - arm);
     canvas.drawPath(path, bracket);
 
-    final y = frame.top + 28 + (frame.height - 56) * Curves.easeInOut.transform(t);
+    final y =
+        frame.top + 28 + (frame.height - 56) * Curves.easeInOut.transform(t);
     final sweep = Paint()
       ..color = AppColors.ochre
       ..strokeWidth = 2.4

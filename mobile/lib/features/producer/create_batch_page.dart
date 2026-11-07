@@ -32,7 +32,8 @@ class _CreateBatchPageState extends ConsumerState<CreateBatchPage> {
     ref.listen<CreateBatchState>(createBatchViewModelProvider, (prev, next) {
       final batch = next.created;
       if (batch != null && prev?.created == null) {
-        Navigator.of(context).pushReplacement(slideUp(TagSheetPage(batch: batch)));
+        Navigator.of(context)
+            .pushReplacement(slideUp(TagSheetPage(batch: batch)));
       }
     });
 
@@ -148,7 +149,8 @@ class _QuantityStepper extends StatelessWidget {
               Pressable(
                 onTap: () => onPreset(n),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
                   decoration: BoxDecoration(
                     color: quantity == n ? AppColors.ink : Colors.transparent,
                     borderRadius: BorderRadius.circular(99),

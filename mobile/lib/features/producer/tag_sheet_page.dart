@@ -33,7 +33,8 @@ class TagSheetPage extends ConsumerWidget {
                     ),
                   ),
                   error: (_, __) => const Center(
-                    child: Text('Could not sign the tags.', style: AppText.body),
+                    child:
+                        Text('Could not sign the tags.', style: AppText.body),
                   ),
                   data: (list) => CustomScrollView(
                     slivers: [
@@ -43,7 +44,8 @@ class TagSheetPage extends ConsumerWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(batch.productName, style: AppText.display(38)),
+                              Text(batch.productName,
+                                  style: AppText.display(38)),
                               const SizedBox(height: 6),
                               Text(
                                 '${list.length} signed tags  ·  ${batch.label}',

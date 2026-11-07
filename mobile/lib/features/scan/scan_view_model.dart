@@ -37,7 +37,9 @@ class ScanViewModel extends AutoDisposeNotifier<ScanState> {
   VerificationRepository get _repo => ref.read(verificationRepositoryProvider);
 
   Future<void> onCode(String raw) async {
-    if (state is! ScanIdle) return; // the camera reports the same code many times
+    if (state is! ScanIdle) {
+      return; // the camera reports the same code many times
+    }
 
     final tag = TagCodec.tryParse(raw);
     if (tag == null) {

@@ -98,7 +98,8 @@ class SealPainter extends CustomPainter {
 
     final trimmed = Path();
     for (final metric in path.computeMetrics()) {
-      trimmed.addPath(metric.extractPath(0, metric.length * progress), Offset.zero);
+      trimmed.addPath(
+          metric.extractPath(0, metric.length * progress), Offset.zero);
     }
     canvas.drawPath(trimmed, stroke);
 

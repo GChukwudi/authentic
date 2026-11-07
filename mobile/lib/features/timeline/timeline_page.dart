@@ -155,7 +155,8 @@ class _RailPainter extends CustomPainter {
       ..color = AppColors.line
       ..strokeWidth = 2;
     if (!isLast) {
-      canvas.drawLine(const Offset(x, nodeY + 12), Offset(x, size.height), line);
+      canvas.drawLine(
+          const Offset(x, nodeY + 12), Offset(x, size.height), line);
     }
     if (!isFirst) {
       canvas.drawLine(const Offset(x, 0), const Offset(x, nodeY - 12), line);

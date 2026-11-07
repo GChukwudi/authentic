@@ -64,7 +64,8 @@ class _SetupViewState extends ConsumerState<_SetupView> {
     return ListView(
       padding: const EdgeInsets.fromLTRB(24, 24, 24, 32),
       children: [
-        Text('PRODUCER MODE', style: AppText.label.copyWith(color: AppColors.ochre)),
+        Text('PRODUCER MODE',
+            style: AppText.label.copyWith(color: AppColors.ochre)),
         const SizedBox(height: 14),
         Text('Issue tags\nbuyers can trust.', style: AppText.display(52)),
         const SizedBox(height: 14),
@@ -87,7 +88,8 @@ class _SetupViewState extends ConsumerState<_SetupView> {
               Expanded(
                 child: Text(
                   'A signing key is created on this phone. It never leaves it, and nobody can sign tags in your name.',
-                  style: AppText.body.copyWith(fontSize: 15, color: AppColors.ink),
+                  style:
+                      AppText.body.copyWith(fontSize: 15, color: AppColors.ink),
                 ),
               ),
             ],
@@ -317,7 +319,8 @@ class _BatchCard extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(batch.productName, style: AppText.heading.copyWith(fontSize: 20)),
+                    Text(batch.productName,
+                        style: AppText.heading.copyWith(fontSize: 20)),
                     const SizedBox(height: 3),
                     Text(
                       '${batch.origin}  ·  ${batch.label}  ·  ${formatDate(batch.createdAt)}',
@@ -468,10 +471,12 @@ class _RecallSheetState extends State<_RecallSheet> {
                         vertical: 11,
                       ),
                       decoration: BoxDecoration(
-                        color: _selected == i ? AppColors.ink : Colors.transparent,
+                        color:
+                            _selected == i ? AppColors.ink : Colors.transparent,
                         borderRadius: BorderRadius.circular(99),
                         border: Border.all(
-                          color: _selected == i ? AppColors.ink : AppColors.line,
+                          color:
+                              _selected == i ? AppColors.ink : AppColors.line,
                           width: 1.4,
                         ),
                       ),
@@ -479,7 +484,8 @@ class _RecallSheetState extends State<_RecallSheet> {
                         _reasons[i],
                         style: AppText.bodyStrong.copyWith(
                           fontSize: 15,
-                          color: _selected == i ? AppColors.paper : AppColors.ink,
+                          color:
+                              _selected == i ? AppColors.paper : AppColors.ink,
                         ),
                       ),
                     ),

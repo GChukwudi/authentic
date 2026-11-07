@@ -83,7 +83,8 @@ class _Masthead extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Text('Works offline', style: AppText.small.copyWith(fontSize: 13)),
+              Text('Works offline',
+                  style: AppText.small.copyWith(fontSize: 13)),
             ],
           ),
         ),
@@ -122,7 +123,8 @@ class _Hero extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('CHECK A PRODUCT', style: AppText.label.copyWith(color: AppColors.ochre)),
+                  Text('CHECK A PRODUCT',
+                      style: AppText.label.copyWith(color: AppColors.ochre)),
                   const SizedBox(height: 14),
                   Text.rich(
                     TextSpan(
@@ -131,7 +133,8 @@ class _Hero extends StatelessWidget {
                         const TextSpan(text: 'Is it the\n'),
                         TextSpan(
                           text: 'real',
-                          style: AppText.display(52, color: AppColors.ochre, italic: true),
+                          style: AppText.display(52,
+                              color: AppColors.ochre, italic: true),
                         ),
                         const TextSpan(text: ' thing?'),
                       ],
@@ -255,7 +258,8 @@ class _HistoryTile extends StatelessWidget {
             children: [
               Container(
                 width: 6,
-                margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                 decoration: BoxDecoration(
                   color: style.color,
                   borderRadius: BorderRadius.circular(9),

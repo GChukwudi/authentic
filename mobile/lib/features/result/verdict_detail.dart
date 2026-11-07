@@ -98,8 +98,8 @@ class VerdictDetail extends StatelessWidget {
                   GhostButton(
                     label: 'View custody trail',
                     icon: Icons.timeline_rounded,
-                    onPressed: () =>
-                        Navigator.of(context).push(slideUp(TimelinePage(batch: batch))),
+                    onPressed: () => Navigator.of(context)
+                        .push(slideUp(TimelinePage(batch: batch))),
                   ),
                   const SizedBox(height: 12),
                 ],
@@ -130,7 +130,10 @@ class _Facts extends StatelessWidget {
         ('Unit', '${outcome.tag.serialLabel} of ${batch.quantity}'),
       if (batch != null) ('Batch', batch.label),
       if (verdict.scanCount != null)
-        ('Scans', verdict.scanCount == 1 ? 'This one' : '${verdict.scanCount} so far'),
+        (
+          'Scans',
+          verdict.scanCount == 1 ? 'This one' : '${verdict.scanCount} so far'
+        ),
     ];
 
     return Column(

@@ -64,10 +64,12 @@ class _DemoSheet extends ConsumerWidget {
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.wifi_off_rounded, size: 20, color: AppColors.inkSoft),
+                  const Icon(Icons.wifi_off_rounded,
+                      size: 20, color: AppColors.inkSoft),
                   const SizedBox(width: 12),
                   const Expanded(
-                    child: Text('Simulate no signal', style: AppText.bodyStrong),
+                    child:
+                        Text('Simulate no signal', style: AppText.bodyStrong),
                   ),
                   Switch(
                     value: !online,

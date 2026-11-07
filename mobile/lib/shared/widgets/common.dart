@@ -41,7 +41,8 @@ class SectionLabel extends StatelessWidget {
       children: [
         Text(text.toUpperCase(), style: AppText.label),
         const Spacer(),
-        if (trailing != null) Text(trailing!, style: AppText.mono(12, color: AppColors.inkMuted)),
+        if (trailing != null)
+          Text(trailing!, style: AppText.mono(12, color: AppColors.inkMuted)),
       ],
     );
   }

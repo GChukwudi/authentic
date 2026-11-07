@@ -76,7 +76,8 @@ class _ScanViewState extends ConsumerState<ScanView> {
               duration: const Duration(milliseconds: 260),
               child: switch (state) {
                 ScanIdle() => const SizedBox.shrink(key: ValueKey('idle')),
-                ScanChecking() => const _CheckingPane(key: ValueKey('checking')),
+                ScanChecking() =>
+                  const _CheckingPane(key: ValueKey('checking')),
                 ScanDone(:final outcome) => VerdictDetail(
                     key: const ValueKey('done'),
                     outcome: outcome,
@@ -136,7 +137,8 @@ class _ScannerChrome extends StatelessWidget {
                 ),
                 const Spacer(),
                 RoundIconButton(
-                  icon: torch ? Icons.flash_on_rounded : Icons.flash_off_rounded,
+                  icon:
+                      torch ? Icons.flash_on_rounded : Icons.flash_off_rounded,
                   onTap: onTorch,
                   dark: true,
                 ),
@@ -160,7 +162,8 @@ class _ScannerChrome extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 22),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(99),
-                  border: Border.all(color: AppColors.paper.faded(0.5), width: 1.4),
+                  border:
+                      Border.all(color: AppColors.paper.faded(0.5), width: 1.4),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -210,13 +213,16 @@ class _CheckingPane extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Center(child: SealMark(size: 72, color: AppColors.forest)),
+                const Center(
+                    child: SealMark(size: 72, color: AppColors.forest)),
                 const SizedBox(height: 28),
                 Text('Checking the tag', style: AppText.display(40)),
                 const SizedBox(height: 22),
-                const _Step(label: 'Signature verified on this phone', done: true),
+                const _Step(
+                    label: 'Signature verified on this phone', done: true),
                 const SizedBox(height: 14),
-                const _Step(label: 'Looking up producer and scan history', done: false),
+                const _Step(
+                    label: 'Looking up producer and scan history', done: false),
               ],
             ),
           ),
